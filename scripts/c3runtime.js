@@ -4319,9 +4319,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.Push,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
-		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Sprite.Acts.SetAngle,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.AddVar,
@@ -4333,9 +4333,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Audio.Acts.SetPaused,
 		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Plugins.Browser.Acts.CancelFullScreen,
-		C3.Plugins.Audio.Acts.SetPaused,
 		C3.Behaviors.DragnDrop.Cnds.OnDragStart,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
@@ -4419,6 +4419,7 @@ self.C3_JsPropNameTable = [
 	{balon5: 0},
 	{btnTekrarOyna: 0},
 	{btndogruu: 0},
+	{btnSes: 0},
 	{butonlar: 0},
 	{smiles: 0},
 	{evre1siz: 0},
@@ -4434,6 +4435,7 @@ self.C3_JsPropNameTable = [
 	{dogrusayisi: 0},
 	{a: 0},
 	{donuyor: 0},
+	{soruNumarasi: 0},
 	{baslangıcX: 0},
 	{baslangıcY: 0},
 	{puan: 0}
@@ -4503,6 +4505,7 @@ self.InstanceType = {
 	balon5: class extends self.ISpriteInstance {},
 	btnTekrarOyna: class extends self.ISpriteInstance {},
 	btndogruu: class extends self.ISpriteInstance {},
+	btnSes: class extends self.ISpriteInstance {},
 	butonlar: class extends self.ISpriteInstance {},
 	smiles: class extends self.ISpriteInstance {},
 	evre1siz: class extends self.ISpriteInstance {},
@@ -4620,10 +4623,10 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpInstVar();
 		},
 		() => -10,
-		() => 14,
+		() => 13,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => Math.round(f0(0, 13));
+			return () => Math.round(f0(0, 12));
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4631,18 +4634,23 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 5,
 		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject(0);
+		},
+		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const v2 = p._GetNode(2).GetVar();
-			const n3 = p._GetNode(3);
-			return () => f0(f1(v2.GetValue(), add(n3.ExpObject(0), 1), ","));
+			const v3 = p._GetNode(3).GetVar();
+			return () => f0(f1(v2.GetValue(), (v3.GetValue() + 1), ","));
 		},
 		p => {
-			const n0 = p._GetNode(0);
-			return () => multiply(27.69, n0.ExpObject(0));
+			const v0 = p._GetNode(0).GetVar();
+			return () => (27.69 * v0.GetValue());
 		},
 		() => 0.01,
 		() => 0.5,
+		() => "ses",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -4656,10 +4664,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(0);
 		},
 		() => 3,
 		() => "close",
