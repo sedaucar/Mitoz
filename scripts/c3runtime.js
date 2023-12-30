@@ -4296,20 +4296,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.DragnDrop,
 		C3.Plugins.Text,
 		C3.Behaviors.MoveTo,
+		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.Audio.Acts.SetPaused,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.Mouse.Acts.SetCursor,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Cnds.OnLayoutStart,
-		C3.Plugins.Audio.Acts.Play,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Cnds.OnLayoutEnd,
 		C3.Plugins.Audio.Acts.StopAll,
-		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.Arr.Cnds.CompareSize,
@@ -4319,6 +4318,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.Push,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Exps.tokenat,
@@ -4333,7 +4333,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.Audio.Acts.SetPaused,
+		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Plugins.Browser.Acts.CancelFullScreen,
 		C3.Behaviors.DragnDrop.Cnds.OnDragStart,
@@ -4614,14 +4614,14 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
-		() => 1,
-		() => 0,
-		() => "muzik",
-		() => "default",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
 		},
+		() => 1,
+		() => 0,
+		() => "muzik",
+		() => "ses",
 		() => -10,
 		() => 13,
 		p => {
@@ -4650,7 +4650,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 0.01,
 		() => 0.5,
-		() => "ses",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -4669,6 +4668,7 @@ self.C3_ExpressionFuncs = [
 		() => "close",
 		() => "open",
 		() => "kapali",
+		() => "default",
 		() => 6,
 		() => 4
 ];
